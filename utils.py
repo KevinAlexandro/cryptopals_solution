@@ -33,12 +33,9 @@ class Utils:
 
         return bytes([a ^ b for a, b in zip(bytes.fromhex(hex_str_1), bytes.fromhex(hex_str_2))]).hex()
 
-    def challenge_3(self, hex_str:str):
-        for hex_number in range(0,256):
-            key = self.fill_hex_key_by_size(f'{hex_number:02d}', len(hex_str))
-            xor_result = self.xor_hex_operation(hex_str, key)
-            print(xor_result)
-            print(self.hex_to_plain_text(xor_result))
-            print(f"--------------------- DONE {hex_number} ---------------------")
-
-        return None
+    @staticmethod
+    def english_word_score(word:str) -> int:
+        score = 0
+        word_arr = list(word)
+        frequencies = [0 for my_char in word_arr]
+        return score
