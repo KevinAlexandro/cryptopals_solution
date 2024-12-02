@@ -1,5 +1,4 @@
 import base64
-import functools
 
 class Utils:
     @staticmethod
@@ -19,8 +18,9 @@ class Utils:
             try:
                 plaint_text = bytes.fromhex(hex_str).decode('utf-16')
             except UnicodeDecodeError:
-                print(f"Decoding hex into str -> {hex_str} failed for both UTF-8 and UTF-16")
-                plaint_text = None
+                # print(f"Decoding hex into str -> {hex_str} failed for both UTF-8 and UTF-16")
+                plaint_text = ''
+                pass
 
         return plaint_text
 
