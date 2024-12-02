@@ -1,7 +1,5 @@
 import base64
-import codecs
-import string
-
+import functools
 
 class Utils:
     @staticmethod
@@ -34,8 +32,12 @@ class Utils:
         return bytes([a ^ b for a, b in zip(bytes.fromhex(hex_str_1), bytes.fromhex(hex_str_2))]).hex()
 
     @staticmethod
-    def english_word_score(word:str) -> int:
-        score = 0
-        word_arr = list(word)
-        frequencies = [0 for my_char in word_arr]
-        return score
+    def english_word_score(word: str) -> int:
+        relevant_chars = set('ETAOIN SHRDLU')
+        frequencies = {}
+
+        for char in word.upper():
+            if char in relevant_chars:
+                frequencies[char] = frequencies.get(char, 0) + 1
+
+        return sum(frequencies.values())
